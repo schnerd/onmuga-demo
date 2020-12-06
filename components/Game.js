@@ -18,6 +18,9 @@ export function Game() {
 
   useEffect(() => {
     sdk = new SdkClient({
+      // Point at local onmuga backend server for testing
+      // server: process.env.NODE_ENV !== 'production' ? 'http://localhost:3001' : undefined,
+      server: 'http://localhost:3001',
       apiKey: 'ILBhyxCkmOFJ20s562e8LIg6aYbJym0BtTRAvddx',
       game: 'demo',
     });
