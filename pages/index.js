@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Game } from './game'
+import { Game } from './Game'
 
 export default function Home() {
   return (
