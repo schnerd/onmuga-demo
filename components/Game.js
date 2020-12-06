@@ -18,7 +18,6 @@ export function Game() {
 
   useEffect(() => {
     sdk = new SdkClient({
-      server: 'http://localhost:3001',
       apiKey: 'ILBhyxCkmOFJ20s562e8LIg6aYbJym0BtTRAvddx',
       game: 'demo',
     });
