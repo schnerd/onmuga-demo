@@ -141,10 +141,10 @@
   resolved "https://registry.npmjs.org/@next/react-refresh-utils/-/react-refresh-utils-10.0.3.tgz#276bec60eae18768f96baf8a52f668f657f50ab4"
   integrity sha512-XtzzPX2R4+MIyu1waEQUo2tiNwWVEkmObA6pboRCDTPOs4Ri8ckaIE08lN5A5opyF6GVN+IEq/J8KQrgsePsZQ==
 
-"@onmuga/sdk@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.npmjs.org/@onmuga/sdk/-/sdk-0.0.4.tgz#c595fcf98cc48bafeb24a1d8cd2c4c5e2b54e4eb"
-  integrity sha512-of+S3+YepUND+F0ahpvThLVeiqUTsnhqFjTM5fmMxG3ywuq7+T0AcD1imo6sDkkhN6E2Wz42ucsM34l9evZyjA==
+"@onmuga/sdk@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@onmuga/sdk/-/sdk-0.0.6.tgz#69d8fd2576e72f10cba0a9eb4c73fd2dfa849e11"
+  integrity sha512-T3rasjmAPBWQNMuAqQXzcnUb1vrELRYXZZCL/PpC7csPW4MLdHGHPBdh7jZtwc8ffQAfNMQ1fTTNICoYMSukkg==
   dependencies:
     socket.io-client "^2.3.1"
 

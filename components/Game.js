@@ -76,7 +76,7 @@ export function Game() {
         <p>
           Players:<br/>
           {users.map(u => (
-            <div className="user">{u.username}</div>
+            <span className="user" key={u.username}>{u.username}</span>
           ))}
         </p>
         <p className="share">
@@ -103,6 +103,7 @@ export function Game() {
           margin-top: 0;
         }
         .user {
+          display: block;
           font-family: monospace;
           font-weight: bold;
         }
