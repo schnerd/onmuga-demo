@@ -20,6 +20,7 @@ export function Game() {
     sdk = new SdkClient({
       apiKey: 'ILBhyxCkmOFJ20s562e8LIg6aYbJym0BtTRAvddx',
       game: 'demo',
+      server: 'https://d3c4f42a158b.ngrok.io',
     });
 
     sdk.on('gameStateChanged', (stateKey, state) => {
