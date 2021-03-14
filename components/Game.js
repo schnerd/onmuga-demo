@@ -34,31 +34,35 @@ export function Game() {
       forceUpdate({});
     });
 
+    let username = sdk.getUsername();
+
+    if (!username) {
+      username = window.prompt('Select a username');
+      sdk.setUsername(username);
+    }
+
+    // Up to you to decide on how room IDs are stored in URL, then extract them appropriately
+    let roomId = getRoomFromUrl(window.location);
+    if (!roomId) {
+      roomId = window.prompt('Enter a room ID or leave blank to create a new room');
+    }
+
+    function onJoinRoom(response) {
+      setRoomId(response.roomId);
+      window.history.pushState(null, null, `/?roomId=${response.roomId}`);
+    }
+
+    // The window.prompt calls blocked the main thread this whole time, put
+    // these next calls in a setTimeout so that the SDK has time to establish
+    // its connection before we make an API call
+    // (Note: The SDK should automatically handle this edge case eventually)
     setTimeout(() => {
-      let username = sdk.getUsername();
-
-      if (!username) {
-        username = window.prompt('Select a username');
-        sdk.setUsername(username);
-      }
-
-      // Up to you to decide on how room IDs are stored in URL, then extract them appropriately
-      let roomId = getRoomFromUrl(window.location);
-      if (!roomId) {
-        roomId = window.prompt('Enter a room ID or leave blank to create a new room');
-      }
-
-      function onJoinRoom(response) {
-        setRoomId(response.roomId);
-        window.history.pushState(null, null, `/?roomId=${response.roomId}`);
-      }
-
       if (!roomId) {
         sdk.createRoom(username).then(onJoinRoom);
       } else {
         sdk.joinRoom(roomId, username).then(onJoinRoom);
       }
-    }, 2000);
+    }, 20);
 
     setIsMounted(true);
   }, []);
