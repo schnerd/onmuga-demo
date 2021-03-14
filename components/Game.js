@@ -62,7 +62,7 @@ export function Game() {
       } else {
         sdk.joinRoom(roomId, username).then(onJoinRoom);
       }
-    }, 20);
+    }, 2000);
 
     setIsMounted(true);
   }, []);
