@@ -34,29 +34,31 @@ export function Game() {
       forceUpdate({});
     });
 
-    let username = sdk.getUsername();
+    setTimeout(() => {
+      let username = sdk.getUsername();
 
-    if (!username) {
-      username = window.prompt('Select a username');
-      sdk.setUsername(username);
-    }
+      if (!username) {
+        username = window.prompt('Select a username');
+        sdk.setUsername(username);
+      }
 
-    // Up to you to decide on how room IDs are stored in URL, then extract them appropriately
-    let roomId = getRoomFromUrl(window.location);
-    if (!roomId) {
-      roomId = window.prompt('Enter a room ID or leave blank to create a new room');
-    }
+      // Up to you to decide on how room IDs are stored in URL, then extract them appropriately
+      let roomId = getRoomFromUrl(window.location);
+      if (!roomId) {
+        roomId = window.prompt('Enter a room ID or leave blank to create a new room');
+      }
 
-    if (!roomId) {
-      sdk.createRoom(username).then(onJoinRoom);
-    } else {
-      sdk.joinRoom(roomId, username).then(onJoinRoom);
-    }
+      function onJoinRoom(response) {
+        setRoomId(response.roomId);
+        window.history.pushState(null, null, `/?roomId=${response.roomId}`);
+      }
 
-    function onJoinRoom(response) {
-      setRoomId(response.roomId);
-      window.history.pushState(null, null, `/?roomId=${response.roomId}`);
-    }
+      if (!roomId) {
+        sdk.createRoom(username).then(onJoinRoom);
+      } else {
+        sdk.joinRoom(roomId, username).then(onJoinRoom);
+      }
+    }, 2000);
 
     setIsMounted(true);
   }, []);
