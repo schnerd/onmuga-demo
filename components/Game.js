@@ -18,7 +18,7 @@ export function Game() {
 
   useEffect(() => {
     sdk = new SdkClient({
-      apiKey: 'ILBhyxCkmOFJ20s562e8LIg6aYbJym0BtTRAvddx',
+      apiKey: 'rBxErZBlOhLALMQJXnZebWFyQ6riJAsYHOpzEP76',
       game: 'demo',
       server: 'https://d3c4f42a158b.ngrok.io',
     });
